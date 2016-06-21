@@ -68,7 +68,12 @@ def parse_table_listing(listing_xml):
 
             # prepare info for requests.get
             payload = {'idTabela': table['@id'], 'versao': table['@versao']}
-            local_filename = '{}-{}.csv'.format(table['@tipo'], table['@id'])
+            local_filename = '{}-{}-{}-{}.csv'.format(
+                table['@tipo'],
+                pkg['@cod'],
+                table['@id'],
+                table['@versao'],
+            )
 
             yield (base_file_url, payload, local_filename)
 
